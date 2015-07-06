@@ -85,10 +85,10 @@ public class ActivityTwo extends Activity {
 			// TODO:
 			// Restore value of counters from saved state
 			// Only need 4 lines of code, one for every count variable
-			mCreate = (Integer) countInfo.get("onCreate");
-			mStart = (Integer) countInfo.get("onStart");
-			mResume = (Integer) countInfo.get("onResume");
-			mRestart = (Integer) countInfo.get("onRestart");
+			mCreate = savedInstanceState.getInt(CREATE_KEY);
+			mStart = savedInstanceState.getInt(START_KEY);
+			mResume = savedInstanceState.getInt(RESUME_KEY);
+			mRestart = savedInstanceState.getInt(RESTART_KEY);
 			
 			
 		}
@@ -188,12 +188,13 @@ public class ActivityTwo extends Activity {
 		// TODO:
 		// Save counter state information with a collection of key-value pairs
 		// 4 lines of code, one for every count variable
-		countInfo.put("onCreate", mCreate);
-		countInfo.put("onStart", mStart);
-		countInfo.put("onResume", mResume);
-		countInfo.put("onRestart", mRestart);
-		
-		
+		savedInstanceState.putInt(CREATE_KEY, mCreate);
+		savedInstanceState.putInt(START_KEY, mStart);
+		savedInstanceState.putInt(RESUME_KEY, mResume);
+		savedInstanceState.putInt(RESTART_KEY, mRestart);
+
+
+
 	}
 
 	// Updates the displayed counters
