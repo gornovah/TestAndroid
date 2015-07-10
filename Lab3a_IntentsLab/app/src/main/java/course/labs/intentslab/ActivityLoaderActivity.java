@@ -67,11 +67,11 @@ public class ActivityLoaderActivity extends Activity {
 		
 		// TODO - Create a new intent to launch the ExplicitlyLoadedActivity class
 		Intent explicitIntent = null;
+		Intent intent = new Intent(ActivityLoaderActivity.this, ExplicitlyLoadedActivity.class);
 		
 		// TODO - Start an Activity using that intent and the request code defined above
-		
-        
-        
+		startActivityForResult(intent, GET_TEXT_REQUEST_CODE);
+
 	}
     
 	// Start a Browser Activity to view a web page or its URL
@@ -82,19 +82,21 @@ public class ActivityLoaderActivity extends Activity {
         
 		// TODO - Create a base intent for viewing a URL
 		// (HINT:  second parameter uses Uri.parse())
-		
         Intent baseIntent = null;
+		baseIntent = new Intent(Intent.ACTION_VIEW,Uri.parse(URL));
 		
 		// TODO - Create a chooser intent, for choosing which Activity
 		// will carry out the baseIntent
 		// (HINT: Use the Intent class' createChooser() method)
 		Intent chooserIntent = null;
+		chooserIntent = Intent.createChooser(chooserIntent, CHOOSER_TEXT);
         
         
 		Log.i(TAG,"Chooser Intent Action:" + chooserIntent.getAction());
         
         
 		// TODO - Start the chooser Activity, using the chooser intent
+		startActivity(chooserIntent);
 
         
 	}
@@ -107,11 +109,8 @@ public class ActivityLoaderActivity extends Activity {
 		// TODO - Process the result only if this method received both a
 		// RESULT_OK result code and a recognized request code
 		// If so, update the Textview showing the user-entered text.
+		if (resultCode == RESULT_OK)
+			mUserTextView.setText(data.getExtras().getString(TAG));
 
-	
-    
-    
-    
-    
     }
 }
